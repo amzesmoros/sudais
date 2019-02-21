@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Mengelola Data Akademik Siswa</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/dist/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{dashboard.css}" rel="stylesheet">
+<link th:href="@{/dist/css/bootstrapTest.css}" rel="stylesheet">
+<link th:href="@{/dist/css/style.css}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" th:href="@{/dashboard}">SUDAIS</a>
+		</div>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user-circle"></span> Account<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li>
+						<div style="text-align: center">
+							<small sec:authentication="name"></small><br>
+							<small class="badge badge-secondary" sec:authentication="principal.authorities"></small>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" th:href="@{/login}">Log out</a>
+						</div>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+	<div class="container-fluid" style="margin-top: 50px">
+		<div class="row">
+			<div class="col-md-2">
+				<ul class="nav nav-sidebar">
+					<li><a th:href="@{/dashboard}"><span class="fa fa-dashboard"></span> Dashboard <span class="sr-only"></span></a></li>
+					<li><a th:href="@{/datadiri}"><span class="fa fa-user-circle-o"></span> Data Diri</a></li>
+					<li><a th:href="@{/pengumuman}"><span class="fa fa-bullhorn"></span> Pengumuman</a></li>
+					<hr style="border-top: 1px dashed #8c8b8b;">
+					<li><a href="#"><span class="fa fa-unlock-alt"></span> GURU</a></li>
+					<li><a th:href="@{/daftarSiswa}"><span class="fa fa-users"></span> Daftar Siswa</a></li>
+					<hr style="border-top: 1px dashed #8c8b8b;">
+					<li><a href="#"><span class="fa fa-unlock-alt"></span> AKADEMIK</a></li>
+					<li><a th:href="@{/dataAkademikGuru}"><span class="fa fa-user-plus"></span> Data Akademik Guru</a></li>
+					<li><a th:href="@{/dataAkademikSiswa}"><span class="fa fa-user-plus"></span> Data Akademik Siswa</a></li>
+					<li><a th:href="@{/request/siswa}"><span class="fa fa-handshake-o"></span> Request Data Siswa</a></li>
+					<li><a th:href="@{/jurusan/indexJurusan}"><span class="fa fa-info-circle"></span> Jurusan</a></li>
+					<li><a th:href="@{/kelas/indexKelas}"><span class="fa fa-info-circle"></span> Kelas</a></li>
+					<li><a th:href="@{/subject/indexSubject}"><span class="fa fa-info-circle"></span> Subject</a></li>
+					<li><a th:href="@{/semester/indexSemester}"><span class="fa fa-map"></span> Semester</a></li>
+				</ul>
+			</div>
+
+			<div class="col-md-10 mb">
+				<div class="border">
+					<h3>Data Akademik Siswa</h3>
+				</div>
+
+				<div class="message-p">
+					<div class="message-header">
+						<h5>Mengelola Data Akademik Siswa</h5>
+					</div>
+					<h5 style="text-align: center">DATA DIRI</h5>
+					<form class="col-md-12 mb" th:action="@{/akademik/siswa/create}" method="post">
+                        <div class="col-md-12 mb" th:object="${siswa}">
+                            <input type="hidden" th:field="*{id}">
+                            <input type="hidden" th:field="*{version}">
+                            <input type="hidden" th:field="*{status}">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">NISN</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" th:field="*{nisn}"><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Nama</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" th:field="*{name}"><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Tempat Lahir</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" th:field="*{birthPlace}"><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Tanggal Lahir</label>
+                                <div class="col-md-10">
+                                    <input type="date" class="form-control" th:field=*{birthTime}><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Jenis Kelamin</label>
+                                <div class="col-md-10">
+                                    <input type="radio" th:field="*{gender}" value="Laki -  laki"><label>Laki - laki</label><br>
+                                    <input type="radio" th:field="*{gender}" value="Perempuan"><label>Perempuan</label><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Agama</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" th:field="*{religion}"><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Nama Ayah</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" th:field="*{namaAyah}"><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Nama Ibu</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" th:field="*{namaIbu}"><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Alamat</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" th:field="*{address}"><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Nomor Handphone</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" th:field="*{phoneNumber}"><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Assign To</label>
+                                <div class="col-md-10">
+                                    <select class="form-control mb-md-10" name="idKelas">
+                                        <option th:each="_kelas : ${listKelas}" th:value="${_kelas.getId()}" th:text="${_kelas.getKelas()}">Kelas</option><br>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Jurusan</label>
+                                <div class="col-md-10">
+                                    <select class="form-control mb-md-10" name="idJurusan">
+                                        <option th:each="_jurusan : ${listJurusan}" th:value="${_jurusan.getId()}" th:text="${_jurusan.getJurusan()}">Kelas</option><br>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+						<br>
+                        <div class="col-md-12 mb" th:object="${user}">
+                            <input type="hidden" th:field="*{id}">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Username</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" th:field="*{username}"><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Set Password</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" th:field="*{password}"><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Role</label>
+                                <div class="col-md-10">
+                                    <select class="form-control mb-md-10" name="jenis_role">
+                                        <option th:value="2" th:text="Guru"></option>
+                                        <option selected th:value="3" th:text="Siswa"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<input type="hidden" th:field="*{user.role.id}"/>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-sm-2 control-label">Role</label>-->
+                            <!--<div class="col-sm-10">-->
+                                <!--<select class="form-control" th:field="*{user.role.role}">-->
+                                    <!--<option th:value="'SISWA'" th:text="Siswa"></option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+						<!--<div class="form-group">-->
+							<!--<label class="col-md-2 control-label" for="inputStatus">Status</label>-->
+							<!--<div class="col-md-10">-->
+								<!--<select class="form-control" id="inputStatus" required th:field="*{status}">-->
+									<!--<option selected th:value="'Waiting'" th:text="Waiting"></option>-->
+									<!--<option th:value="'Accept'" th:text="Accept"></option>-->
+									<!--<option th:value="'Reject'" th:text="Reject"></option>-->
+								<!--</select>-->
+							<!--</div>-->
+						<!--</div>-->
+						<div class="form-group">
+							<div class="col-md-2 control-label">
+								<button type="submit" class="btn btn-default">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script th:src="@{/dist/js/bootstrap.min.js}"></script>
+
+	<br />
+	<br />
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<p align="center">Copyright &copy; Kelompok 10</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

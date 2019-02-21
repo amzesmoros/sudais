@@ -1,0 +1,220 @@
+/* Dash Side */
+
+.ds {
+	background: #d6d9dc;
+	padding-top: 20px;
+}
+
+.ds h4 {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.ds i {
+	font-size: 14px;
+}
+
+.ds .desc {
+	border-bottom: 1px dotted #979797;
+	display: inline-block;
+	padding: 15px 0;
+	width: 100%;
+}
+
+.ds .desc:hover {
+	background: #ffffff;
+}
+
+.ds .thumb {
+	width: 30px;
+	margin: 0 10px 0 20px;
+	display: block;
+	float: left;
+}
+
+.ds .details {
+	width: 170px;
+	float: left;
+}
+
+.ds > .desc p {
+	font-size: 11px;
+}
+
+.ds p > muted {
+	font-size: 9px;
+	text-transform: uppercase;
+	font-style: italic;
+	color: #666666
+}
+
+.ds a {
+	color: #4ECDC4;
+}
+
+/*Donut Chart Main Page Conf*/
+.donut-main {
+	display: block;
+	text-align: center;
+}
+
+.donut-main h4 {
+	font-weight: 700;
+	font-size: 16px;
+}
+
+.mt {
+	margin-top: 25px;
+}
+
+.centered {
+	text-align: center;
+}
+
+/*badge*/
+.badge.bg-primary {
+    background: #8075c4;
+}
+
+.badge.bg-success {
+    background: #a9d86e;
+}
+
+.badge.bg-warning {
+    background: #FCB322;
+}
+
+.badge.bg-important {
+    background: #ff6c60;
+}
+
+.bg-theme {
+	background-color: #4ECDC4;
+}
+
+.fa-clock-o:before {
+  content: "\f017";
+}
+
+.mb {
+	margin-bottom: 25px;
+}
+
+/* Message Panel */
+.message-p {
+	background: #f5f5f5;
+}
+.message-p .message-header {
+	background: #dcdfe3;
+	padding: 3px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+.message-p h5 {
+	font-weight: 200;
+	margin-top: 10px;
+}
+.message-p p {
+	margin-left: 10px;
+}
+.message-p .small {
+	font-size: 11px;
+	color: #aab2bd;
+	margin-top: -10px;
+}
+.message-p name {
+	color: #ed5565;
+	font-weight: 700;
+}
+.message-p .message {
+	font-size: 12px;
+}
+.message-p .form-inline {
+	margin-left: 10px;
+}
+.message-p .form-inline .form-group {
+	width: 80%;
+}
+.message-p .form-inline .form-control {
+	width: 100%
+}
+
+.materi-p {
+	background: #f5f5f5;
+}
+.materi .message-header {
+	background: #dcdfe3;
+	padding: 3px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+.mater h5 {
+	font-weight: 200;
+	margin-top: 10px;
+}
+.materi p {
+	margin-left: 10px;
+}
+.mater .small {
+	font-size: 11px;
+	color: #aab2bd;
+	margin-top: -10px;
+}
+.materi name {
+	color: #ed5565;
+	font-weight: 700;
+}
+.materi .message {
+	font-size: 12px;
+}
+.materi .form-inline {
+	margin-left: 10px;
+}
+.materi .form-inline .form-group {
+	width: 80%;
+}
+.materi .form-inline .form-control {
+	width: 100%
+}
+
+
+/* Message M Panel */
+.message-m {
+	background: #f5f5f5;
+    top: 20px;
+}
+.message-m .message-header {
+	background: #dcdfe3;
+	padding: 3px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+.message-m h5 {
+	font-weight: 200;
+	margin-top: 10px;
+}
+.message-m p {
+	margin-left: 10px;
+}
+.message-m .small {
+	font-size: 11px;
+	color: #aab2bd;
+	margin-top: -10px;
+}
+.message-m name {
+	color: #ed5565;
+	font-weight: 700;
+}
+.message-m .message {
+	font-size: 12px;
+}
+.message-m .form-inline {
+	margin-left: 10px;
+}
+.message-m .form-inline .form-group {
+	width: 80%;
+}
+.message-m .form-inline .form-control {
+	width: 100%
+}
+

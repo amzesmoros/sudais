@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Subject</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{dashboard.css}" rel="stylesheet">
+    <link th:href="@{/dist/css/bootstrapTest.css}" rel="stylesheet">
+    <link th:href="@{/dist/css/style.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/dashboard}">SUDAIS</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user-circle"></span> Account<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div style="text-align: center">
+                            <small sec:authentication="name"></small><br>
+                            <small class="badge badge-secondary" sec:authentication="principal.authorities"></small>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" th:href="@{/login}">Log out</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid" style="margin-top: 50px">
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-sidebar">
+                <li><a th:href="@{/dashboard}"><span class="fa fa-dashboard"></span> Dashboard <span class="sr-only"></span></a></li>
+                <li><a th:href="@{/datadiri}"><span class="fa fa-user-circle-o"></span> Data Diri</a></li>
+                <li><a th:href="@{/pengumuman}"><span class="fa fa-bullhorn"></span> Pengumuman</a></li>
+                <hr style="border-top: 1px dashed #8c8b8b;">
+                <li><a href="#"><span class="fa fa-unlock-alt"></span> GURU</a></li>
+                <li><a th:href="@{/daftarSiswa}"><span class="fa fa-users"></span> Daftar Siswa</a></li>
+                <hr style="border-top: 1px dashed #8c8b8b;">
+                <li><a href="#"><span class="fa fa-unlock-alt"></span> AKADEMIK</a></li>
+                <li><a th:href="@{/dataAkademikGuru}"><span class="fa fa-user-plus"></span> Data Akademik Guru</a></li>
+                <li><a th:href="@{/dataAkademikSiswa}"><span class="fa fa-user-plus"></span> Data Akademik Siswa</a></li>
+                <li><a th:href="@{/request/siswa}"><span class="fa fa-handshake-o"></span> Request Data Siswa</a></li>
+                <li><a th:href="@{/jurusan/indexJurusan}"><span class="fa fa-info-circle"></span> Jurusan</a></li>
+                <li><a th:href="@{/kelas/indexKelas}"><span class="fa fa-info-circle"></span> Kelas</a></li>
+                <li><a th:href="@{/subject/indexSubject}"><span class="fa fa-info-circle"></span> Subject</a></li>
+                <li><a th:href="@{/semester/indexSemester}"><span class="fa fa-map"></span> Semester</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-10 mb">
+            <div class="border">
+                <h3>Subject</h3>
+            </div>
+
+            <div class="message-p">
+                <div class="message-header">
+                    <h5>Data Subject</h5>
+                    <h5>
+                        <a href="/subject/create">Add Subject</a>
+                    </h5>
+                </div>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Subject</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="_subject, rowStat : ${subject}">
+                        <td class="col-sm-1" th:text="${rowStat.count}"></td>
+                        <td class="col-sm-6" th:text="${_subject.mapel}"></td>
+                        <td class="col-sm-3">
+                            <a th:href="${'/subject/edit/' +_subject.id}"><button type="button" class="btn btn-primary">
+                                <i class="glyphicon glyphicon-edit"></i> Edit </button></a>
+                            <a th:href="${'/subject/delete/' +_subject.id}"><button type="button" class="btn btn-danger">
+                                <i class="glyphicon glyphicon-trash"></i> Delete</button></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script th:src="@{/dist/js/bootstrap.min.js}"></script>
+
+<br />
+<br />
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <p align="center">Copyright &copy; Kelompok 10</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
